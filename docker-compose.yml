@@ -15,7 +15,7 @@ services:
   wp:
     image: wordpress:fpm-alpine
     environment:
-      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_HOST: db:3311
       WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
       WORDPRESS_DB_USER: ${MYSQL_USER}
       WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
@@ -36,8 +36,8 @@ services:
       - ./le/certs:/etc/letsencrypt
       - ./le/data:/data/letsencrypt
     ports:
-      - '80:80'
-      - '443:443'
+      - '8060:80'
+      - '8063:443'
     depends_on:
       - wp
     restart: unless-stopped
